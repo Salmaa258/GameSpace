@@ -1,3 +1,11 @@
 <resources>
+    <!--Pantalla Login-->
     <string name="app_name">GameSpace</string>
+    <string name="NoTienesCuenta">¿No tienes una cuenta? Regístrate</string>
+    <string name="iniciar_sesion">Iniciar Sesión</string>
+    <string name="olvidaste_la_contrasena">¿Olvidaste la contraseña?</string>
+    <string name="contrasena">Contraseña</string>
+    <string name="correo_electronico">Correo electrónico</string>
+    <string name="logo_principal_de_la_aplicacion">Logo principal de la aplicación</string>
+    <string name="bienvenida">¡Bienvenido de nuevo!</string>
 </resources>
