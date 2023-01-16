@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:padding="@dimen/default_margin"
+    tools:context=".Login">
+
+    <ImageView
+        android:id="@+id/img_logo_login"
+        android:layout_width="184dp"
+        android:layout_height="176dp"
+        android:layout_marginStart="80dp"
+        android:contentDescription="@string/logo_principal_de_la_aplicacion"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logo" />
+
+    <TextView
+        android:id="@+id/txt_InicioSesion"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/marginTop"
+        android:text="@string/iniciar_sesion"
+        android:textSize="@dimen/size_title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/img_logo_login" />
+
+    <TextView
+        android:id="@+id/txt_bienvenida"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/MarginTopSmall"
+        android:text="@string/bienvenida"
+        android:textSize="@dimen/size_title2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_InicioSesion" />
+
+    <TextView
+        android:id="@+id/txt_correo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/marginTop"
+        android:text="@string/correo_electronico"
+        android:textSize="@dimen/size_title2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_bienvenida" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/txt_input_correo"
+        android:layout_width="362dp"
+        android:layout_height="57dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_correo">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/txt_input_edit_correo"
+            android:layout_width="@dimen/TxtInput_width"
+            android:layout_height="@dimen/TxtInput_height"
+            tools:ignore="SpeakableTextPresentCheck" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/txt_contrasena"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/marginTop"
+        android:text="@string/contrasena"
+        android:textSize="@dimen/size_title2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_input_correo" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/txt_input_contrasena"
+        android:layout_width="360dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="1dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:endIconMode="password_toggle"
+        app:endIconDrawable="@drawable/password_toogle"
+        app:layout_constraintTop_toBottomOf="@+id/txt_contrasena">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/txt_input_edit_contrasena"
+            android:layout_width="@dimen/TxtInput_width"
+            android:layout_height="@dimen/TxtInput_height"
+            android:inputType="textPassword"
+            tools:ignore="SpeakableTextPresentCheck" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/txt_olvidar_contrasena"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/MarginTopSmall"
+        android:text="@string/olvidaste_la_contrasena"
+        android:textSize="@dimen/size_title3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_input_contrasena" />
+
+    <Button
+        android:id="@+id/btn_inicio_sesion"
+        style="@style/boton"
+        android:layout_width="195dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="@dimen/marginTopB"
+        android:text="@string/iniciar_sesion"
+        android:textSize="@dimen/size_title2"
+        app:cornerRadius="@dimen/btn_corners"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_olvidar_contrasena"
+        tools:ignore="DuplicateSpeakableTextCheck,TextContrastCheck" />
+
+    <TextView
+        android:id="@+id/txt_registro"
+        android:layout_width="167dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="92dp"
+        android:layout_marginTop="@dimen/marginTop"
+        android:text="@string/NoTienesCuenta"
+        android:textAlignment="center"
+        android:textSize="@dimen/size_title3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_inicio_sesion" />
+</androidx.constraintlayout.widget.ConstraintLayout>
