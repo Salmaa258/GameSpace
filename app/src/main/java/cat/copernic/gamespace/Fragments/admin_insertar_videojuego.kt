@@ -5,13 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
-import androidx.constraintlayout.widget.ConstraintLayout
 import cat.copernic.gamespace.R
-import cat.copernic.gamespace.databinding.FragmentAdminInsertarVideojuegoBinding
-import com.google.android.material.textfield.TextInputEditText
-import com.google.android.material.textfield.TextInputLayout
-import java.util.*
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -23,8 +17,6 @@ private const val ARG_PARAM1 = "param1"
  * create an instance of this fragment.
  */
 class admin_insertar_videojuego : Fragment() {
-
-    private lateinit var binding: FragmentAdminInsertarVideojuegoBinding
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
