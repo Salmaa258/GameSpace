@@ -1,11 +1,59 @@
 <resources>
     <!--Pantalla Login-->
     <string name="app_name">GameSpace</string>
-    <string name="NoTienesCuenta">¿No tienes una cuenta? Regístrate</string>
+    <string name="NoTienesCuenta">¿No tienes una cuenta? <b>Regístrate</b></string>
     <string name="iniciar_sesion">Iniciar Sesión</string>
     <string name="olvidaste_la_contrasena">¿Olvidaste la contraseña?</string>
     <string name="contrasena">Contraseña</string>
     <string name="correo_electronico">Correo electrónico</string>
     <string name="logo_principal_de_la_aplicacion">Logo principal de la aplicación</string>
     <string name="bienvenida">¡Bienvenido de nuevo!</string>
+
+    <!--Pantalla Registro-->
+    <string name="registrate">Regístrate</string>
+    <string name="nombre">Nombre</string>
+    <string name="apellidos">Apellidos</string>
+    <string name="repetir_contrasena">Repetir Contraseña</string>
+    <string name="termino_de_servicio_politica_de_privacidad">Acepto los Términos de Servicio y la Política de Privacidad</string>
+    <string name="crear_cuenta">Crear Cuenta</string>
+    <string name="ya_tienes_cuenta_inicia_sesion">¿Ya tienes cuenta? <b>Inicia Sesión</b></string>
+
+    <!--Pantalla Olvidar Contraseña-->
+    <string name="restablecer_la_contrasena">Restablecer la contraseña</string>
+    <string name="instrucciones_restablecer_contrasena">Introduce el correo electrónico y te enviaremos instrucciones para restablecer la contraseña</string>
+    <string name="enviar">Enviar</string>
+    <string name="cancelar">Cancelar</string>
+
+    <!--Pantalla inicio listado videojuegos-->
+    <string name="Search">Buscar videojuegos</string>
+
+    <!--Pantalla Editar perfil-->
+    <string name="cuenta">Cuenta</string>
+    <string name="descripcion_img_perfil">Foto de perfil del usuario</string>
+    <string name="guardar">Guardar</string>
+
+    <!--Pantalla administrador insertar videojuego-->
+    <string name="insertar_videojuego">Insertar Videojuego</string>
+    <string name="descripcion_img_videojuego_admin_insertar">Insertar imagen del videojuego</string>
+    <string name="descripcion">Descripción</string>
+    <string name="crear">Crear</string>
+    <string name="imagen">Imágen</string>
+    <string name="genero">Género</string>
+    <string name="escoge_img_portada_game">Escoge una imágen para la portada del videojuego</string>
+
+    <!--Pantalla administrador modificar videojuego-->
+    <string name="modificar_videojuego">Modificar Videojuego</string>
+    <string name="descripcion_img_videojuego_admin_modificar">Modificar imagen del videojuego</string>
+    <string name="modificar">Modificar</string>
+    <string name="escoge_nueva_img_portada_game">Modifica la imágen para la portada del videojuego</string>
+
+    <!--Pantalla mostrar información adicional del videojuego-->
+    <string name="descripcion_de_la_imagen_del_videojuego">descripcion de la imagen del videojuego</string>
+    <string name="txt_nombre_videojuego_prueba">Nombre del videojuego</string>
+    <string name="descripcion_del_videojuego">Descripción del videojuego</string>
+    <string name="icono_de_marcador_anadir">icono de marcador añadir</string>
+    <string name="lo_quiero">¡Lo quiero!</string>
+    <string name="icono_de_marcador_para_obtenerlo">icono de marcador para obtenerlo</string>
+    <string name="lo_tengo">Lo tengo</string>
+
 </resources>

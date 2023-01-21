@@ -14,11 +14,13 @@
         <!-- Customize your theme here. -->
 
         <!-- Button -->
-        <item name="buttonStyle">@style/boton</item>
+        <item name="materialButtonStyle">@style/boton</item>
 
+        <!-- TextInputLayout -->
+        <item name="textInputStyle">@style/TextInput</item>
 
-
-
+        <!--Spinner-->
+        <item name="spinnerStyle">@style/Spinner</item>
 
 
 

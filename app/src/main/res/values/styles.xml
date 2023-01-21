@@ -1,14 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <!--Botón-->
+    <!-- Button -->
     <style name="boton" parent="Widget.MaterialComponents.Button">
         <item name="android:backgroundTint">@color/blue_dark</item>
         <item name="android:textColor">@color/white</item>
         <item name="android:layout_width">@dimen/btn_width</item>
         <item name="android:layout_height">@dimen/btn_height</item>
+        <item name="cornerRadius">@dimen/btn_corners</item>
+    </style>
+
+    <!-- TextInputLayout -->
+    <style name="TextInput" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="boxStrokeColor">@color/blue</item>
+        <item name="android:layout_width">@dimen/TxtInput_width</item>
+        <item name="android:layout_height">@dimen/TxtInput_height</item>
+    </style>
+
+    <!--Spinner-->
+    <style name="Spinner" parent="Widget.AppCompat.Spinner">
+        <item name="android:height">@dimen/spinner_height</item>
+        <item name="backgroundTint">@color/purple_dark</item>
     </style>
 
 
+
+    <!--Modo oscuro-->
+    <!-- Button -->
+    <style name="boton_noche" parent="Widget.MaterialComponents.Button">
+        <item name="cornerRadius">@dimen/btn_corners</item>
+    </style>
+
+    <!-- TextInputLayout -->
+    <style name="TextInput_noche" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="boxStrokeColor">@color/purple</item>
+    </style>
+
+    <!--Spinner-->
+    <style name="Spinner_noche" parent="Widget.AppCompat.Spinner">
+        <item name="backgroundTint">@color/blue_dark</item>
+    </style>
+
+    <!--Divider
+    <style name="divider_noche" parent="Widget.Material3.MaterialDivider">
+        <item name="android:backgroundTint">@color/white</item>
+    </style>-->
 
 </resources>

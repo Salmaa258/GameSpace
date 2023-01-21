@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    tools:context=".Fragments.admin_modificar_videojuego">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="SpeakableTextPresentCheck">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/default_margin">
+
+
+            <TextView
+                android:id="@+id/txt_modificar_videojuego"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/modificar_videojuego"
+                android:textSize="@dimen/size_title"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <TextView
+                android:id="@+id/txt_nombre_videojuego_modificar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/marginTop"
+                android:text="@string/nombre"
+                android:textSize="@dimen/size_title2"
+                android:textColor="@color/black"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt_modificar_videojuego" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/txt_input_nombre_modificar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/MarginTopSmall"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt_nombre_videojuego_modificar">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txt_input_edit_nombre_modificar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLength="60"
+                    tools:ignore="SpeakableTextPresentCheck" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/txt_descripcion_modificar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/MarginTopS"
+                android:text="@string/descripcion"
+                android:textSize="@dimen/size_title2"
+                android:textColor="@color/black"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt_input_nombre_modificar" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/txt_input_descripcion_modificar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/MarginTopSmall"
+                app:counterEnabled="true"
+                app:counterMaxLength="200"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt_descripcion_modificar">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txt_input_edit_descripcion_modificar"
+                    android:layout_width="match_parent"
+                    android:layout_height="154dp"
+                    android:gravity="start|top"
+                    android:maxLength="200"
+                    tools:ignore="SpeakableTextPresentCheck" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/txt_imagen_modificar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/MarginTopS"
+                android:text="@string/imagen"
+                android:textSize="@dimen/size_title2"
+                android:textColor="@color/black"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt_input_descripcion_modificar" />
+
+            <TextView
+                android:id="@+id/txt_escoge_nueva_img_game"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/MarginTopSmall"
+                android:text="@string/escoge_nueva_img_portada_game"
+                android:textSize="@dimen/size_title4"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt_imagen_modificar" />
+
+            <ImageView
+                android:id="@+id/img_videojuego_modificar"
+                android:layout_width="150dp"
+                android:layout_height="100dp"
+                android:layout_marginTop="@dimen/MarginTopSmall"
+                android:contentDescription="@string/descripcion_img_videojuego_admin_modificar"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt_escoge_nueva_img_game"
+                app:srcCompat="@drawable/insert_img_game" />
+
+            <TextView
+                android:id="@+id/txt_genero_modificar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/MarginTopS"
+                android:text="@string/genero"
+                android:textSize="@dimen/size_title2"
+                android:textColor="@color/black"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/img_videojuego_modificar" />
+
+            <Spinner
+                android:id="@+id/spinner_genero_modificar"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="@dimen/MarginTopSmall"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt_genero_modificar"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+
+            <Button
+                android:id="@+id/btn_cancelar_modificar"
+                android:layout_width="@dimen/btn_width_doble"
+                android:layout_height="@dimen/btn_height_doble"
+                android:layout_marginTop="@dimen/marginTopBig"
+                android:text="@string/cancelar"
+                android:textSize="@dimen/size_title3"
+                app:layout_constraintEnd_toStartOf="@+id/btn_modificar"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/spinner_genero_modificar"
+                tools:ignore="TextContrastCheck" />
+
+            <Button
+                android:id="@+id/btn_modificar"
+                android:layout_width="@dimen/btn_width_doble"
+                android:layout_height="@dimen/btn_height_doble"
+                android:text="@string/modificar"
+                android:textSize="@dimen/size_title3"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/btn_cancelar_modificar"
+                app:layout_constraintTop_toTopOf="@+id/btn_cancelar_modificar"
+                tools:ignore="TextContrastCheck" />
+
+
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
