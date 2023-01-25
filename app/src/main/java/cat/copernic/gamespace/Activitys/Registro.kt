@@ -3,12 +3,21 @@ package cat.copernic.gamespace.Activitys
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import cat.copernic.gamespace.R
+import android.view.View
+import android.widget.Toast
+import cat.copernic.gamespace.Utils.Utils
+import cat.copernic.gamespace.Utils.Utils.Companion.camps_buits_registre
+import cat.copernic.gamespace.Utils.Utils.Companion.comprova_email_registre
 import cat.copernic.gamespace.databinding.ActivityRegistroBinding
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
+import com.google.android.material.snackbar.Snackbar
 
 class Registro : AppCompatActivity() {
 
     private lateinit var binding: ActivityRegistroBinding
+    private lateinit var auth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -16,7 +25,11 @@ class Registro : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
+        //Esconder AppBar
+        if(supportActionBar != null)
+            supportActionBar!!.hide()
 
+        auth= Firebase.auth
 
         //CLIC VOLVER INICIO DE SESIÓN
         binding.txtIniciaSesionRegistro.setOnClickListener {
@@ -26,9 +39,33 @@ class Registro : AppCompatActivity() {
 
         //CLIC INICIAR SESIÓN
         binding.btnCreaCuenta.setOnClickListener {
-            startActivity(Intent(this, Login::class.java))
-            finish()
-        }
+            var correo = binding.txtInputEditCorreoRegistro.text.toString()
+            var contra = binding.txtInputEditContrasenaRegistro.text.toString()
+            var contraRep = binding.txtInputEditRepetirContrasena.text.toString()
 
+            if(contra.equals(contraRep)&&campoVacio(correo,contra,contraRep)&&comprova_email_registre(binding)){
+                registrar(correo,contra, it)
+            }else{
+                camps_buits_registre(this, binding)
+            }
+        }
     }
+
+    fun campoVacio(correo:String, contra:String, contraRep:String):Boolean{
+        return correo.isNotEmpty()&&contra.isNotEmpty()&&contraRep.isNotEmpty()
+    }
+
+    fun registrar(correo: String, contra: String, it: View) {
+        auth.createUserWithEmailAndPassword(correo,contra).addOnCompleteListener(this){task ->
+            if(task.isSuccessful){
+                startActivity(Intent(this,Login::class.java))
+                finish()
+            }else{
+                val snack = Snackbar.make(it,"El registro ha fallado",Snackbar.LENGTH_LONG)
+                snack.show()
+            }
+        }
+    }
+
+
 }

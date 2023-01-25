@@ -16,7 +16,9 @@ class RecuperarContrasena : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
-
+        //Esconder AppBar
+        if(supportActionBar != null)
+            supportActionBar!!.hide()
 
         //CLIC VOLVER A INICIO DE SESIÓN
         binding.btnCancelar.setOnClickListener {

@@ -11,7 +11,10 @@ class splashart : AppCompatActivity() {
     var timer = Timer()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        
+
+        //Esconder AppBar
+        if(supportActionBar != null)
+            supportActionBar!!.hide()
 
         setContentView(R.layout.activity_splashart)
         timer.schedule(1200) {

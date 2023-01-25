@@ -56,12 +56,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
+        app:errorEnabled="true"
         app:layout_constraintTop_toBottomOf="@+id/txt_correo">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/txt_input_edit_correo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:inputType="textEmailAddress"
             tools:ignore="SpeakableTextPresentCheck" />
     </com.google.android.material.textfield.TextInputLayout>
 
