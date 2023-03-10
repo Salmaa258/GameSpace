@@ -56,4 +56,14 @@
     <string name="icono_de_marcador_para_obtenerlo">icono de marcador para obtenerlo</string>
     <string name="lo_tengo">Lo tengo</string>
 
+    <!--Menú principal-->
+    <string name="inicio">Inicio</string>
+    <string name="perfil">Perfil</string>
+    <string name="biblioteca">Biblioteca</string>
+    <string name="administrador">Administrador</string>
+    <string name="cerrar_sesion">Cerrar Sesión</string>
+
+
+
+
 </resources>

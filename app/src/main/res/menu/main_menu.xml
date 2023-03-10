@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single" >
+        <item
+            android:id="@+id/admin_modificar_videojuego"
+            android:icon="@drawable/inicio"
+            android:title="@string/inicio"
+            android:checked="true"/>
+    </group>
+
+    <group
+        android:id="@+id/third_section"
+        android:checkableBehavior="none">
+        <item
+            android:id="@+id/editar_perfil"
+            android:icon="@drawable/perfil"
+            android:title="@string/perfil" />
+        <item
+            android:id="@+id/mostrar_videojuego"
+            android:icon="@drawable/biblioteca"
+            android:title="@string/biblioteca" />
+        <item
+            android:id="@+id/admin_insertar_videojuego"
+            android:icon="@drawable/admin"
+            android:title="@string/administrador" />
+    </group>
+
+    <group
+        android:id="@+id/third_section2"
+        android:checkableBehavior="none">
+        <item
+            android:id="@+id/CerrarSesion"
+            android:icon="@drawable/logout"
+            android:title="@string/cerrar_sesion" />
+    </group>
+</menu>

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background"
     tools:context=".Fragments.mostrar_videojuego">
 
 
@@ -107,6 +108,7 @@
                 android:textSize="@dimen/size_title3"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/img_anadir" />
+
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

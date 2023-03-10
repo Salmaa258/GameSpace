@@ -1,19 +1,30 @@
 package cat.copernic.gamespace.Utils
 
+import android.app.Activity
 import android.content.Context
+import android.content.Intent
+import android.graphics.Bitmap
+import android.provider.MediaStore
+import androidx.activity.result.ActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
 import androidx.core.util.PatternsCompat
+import cat.copernic.gamespace.Fragments.admin_insertar_videojuego
+import cat.copernic.gamespace.Fragments.editar_perfil
 import cat.copernic.gamespace.databinding.ActivityLoginBinding
 import cat.copernic.gamespace.databinding.ActivityRegistroBinding
+import cat.copernic.gamespace.databinding.FragmentEditarPerfilBinding
 
 class Utils {
     companion object{
         //Login
+        //Elimina els espais en blanc
         fun borrar_espais(binding: ActivityLoginBinding){
             binding.txtInputEditCorreo.text.toString().replace(" ", "")
             binding.txtInputEditContrasena.text.toString().replace(" ", "")
         }
 
+        //Comprova que no hagui camps buits
         fun camps_buits_login(context: Context, binding: ActivityLoginBinding){
             var correo = binding.txtInputEditCorreo.text.toString()
             var contra = binding.txtInputEditContrasena.text.toString()
@@ -41,6 +52,7 @@ class Utils {
             }
         }
 
+        //Comprova que el correu electrònic sigui vàlid
         fun comprova_email(binding: ActivityLoginBinding): Boolean {
             val email = binding.txtInputEditCorreo.text.toString()
             return if (!PatternsCompat.EMAIL_ADDRESS.matcher(email).matches()){
@@ -53,6 +65,7 @@ class Utils {
         }
 
         //Registro
+        //Comprova que no hagui camps buits
         fun camps_buits_registre(context: Context, binding: ActivityRegistroBinding){
             var correo = binding.txtInputEditCorreoRegistro.text.toString()
             var contra = binding.txtInputEditContrasenaRegistro.text.toString()
@@ -87,6 +100,7 @@ class Utils {
             }
         }
 
+        //Comprova que el correu electrònic sigui vàlid
         fun comprova_email_registre(binding: ActivityRegistroBinding): Boolean {
             val email = binding.txtInputEditCorreoRegistro.text.toString()
             return if (!PatternsCompat.EMAIL_ADDRESS.matcher(email).matches()){
@@ -97,7 +111,6 @@ class Utils {
                 true
             }
         }
-
 
 
     }

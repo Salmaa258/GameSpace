@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/editar_perfil">
+
+    <fragment
+        android:id="@+id/mostrar_videojuego"
+        android:name="cat.copernic.gamespace.Fragments.mostrar_videojuego"
+        android:label="fragment_mostrar_videojuego"
+        tools:layout="@layout/fragment_mostrar_videojuego" />
+    <fragment
+        android:id="@+id/editar_perfil"
+        android:name="cat.copernic.gamespace.Fragments.editar_perfil"
+        android:label="fragment_editar_perfil"
+        tools:layout="@layout/fragment_editar_perfil" />
+    <fragment
+        android:id="@+id/admin_insertar_videojuego"
+        android:name="cat.copernic.gamespace.Fragments.admin_insertar_videojuego"
+        android:label="fragment_admin_insertar_videojuego"
+        tools:layout="@layout/fragment_admin_insertar_videojuego" />
+    <fragment
+        android:id="@+id/admin_modificar_videojuego"
+        android:name="cat.copernic.gamespace.Fragments.admin_modificar_videojuego"
+        android:label="fragment_admin_modificar_videojuego"
+        tools:layout="@layout/fragment_admin_modificar_videojuego" />
+</navigation>
