@@ -72,6 +72,16 @@ class Login : AppCompatActivity() {
         }
     }
 
+    //Funció que guarda la sessió
+    override fun onStart() {
+        super.onStart()
+        val user = Firebase.auth.currentUser
+        if (user != null) {
+            var intent = Intent(this@Login, MainActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+    }
 
 
 

@@ -9,9 +9,11 @@ import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
 import androidx.core.util.PatternsCompat
+import cat.copernic.gamespace.Activitys.RecuperarContrasena
 import cat.copernic.gamespace.Fragments.admin_insertar_videojuego
 import cat.copernic.gamespace.Fragments.editar_perfil
 import cat.copernic.gamespace.databinding.ActivityLoginBinding
+import cat.copernic.gamespace.databinding.ActivityRecuperarContrasenaBinding
 import cat.copernic.gamespace.databinding.ActivityRegistroBinding
 import cat.copernic.gamespace.databinding.FragmentEditarPerfilBinding
 
@@ -111,6 +113,19 @@ class Utils {
                 true
             }
         }
+
+        //Comprova que el correu electrònic sigui vàlid
+        fun comprova_email_recuperarContra(binding: ActivityRecuperarContrasenaBinding): Boolean {
+            val email = binding.txtInputEditCorreoRetablecerContrasena.text.toString()
+            return if (!PatternsCompat.EMAIL_ADDRESS.matcher(email).matches()){
+                binding.txtInputEditCorreoRetablecerContrasena.error = "El correo no es válido"
+                false
+            }else{
+                binding.txtInputEditCorreoRetablecerContrasena.error = null
+                true
+            }
+        }
+
 
 
     }
