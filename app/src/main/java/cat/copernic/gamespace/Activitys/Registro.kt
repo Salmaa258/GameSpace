@@ -41,6 +41,8 @@ class Registro : AppCompatActivity() {
             var contra = binding.txtInputEditContrasenaRegistro.text.toString()
             var contraRep = binding.txtInputEditRepetirContrasena.text.toString()
 
+            //si la contrasenya coincideix amb el camp de repetir contrasenya, tots els camps estan plens i
+            //la contrasenya es correcte, cridem funció per fer registre.
             if(contra.equals(contraRep)&&campoVacio(correo,contra,contraRep)&&comprova_email_registre(binding)){
                 registrar(correo,contra, it)
             }else{
@@ -49,10 +51,13 @@ class Registro : AppCompatActivity() {
         }
     }
 
+    //funció per comprovar que els camps del correu electrònic, la contrasenya i el camp de repetir
+    // la contrasenya no son buits.
     fun campoVacio(correo:String, contra:String, contraRep:String):Boolean{
         return correo.isNotEmpty()&&contra.isNotEmpty()&&contraRep.isNotEmpty()
     }
 
+    //funció per registrar amb el correu electrònic
     fun registrar(correo: String, contra: String, it: View) {
         auth.createUserWithEmailAndPassword(correo,contra).addOnCompleteListener(this){task ->
             if(task.isSuccessful){

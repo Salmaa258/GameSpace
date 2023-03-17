@@ -37,10 +37,10 @@ class MainActivity : AppCompatActivity() {
         val navController = findNavController(R.id.nav_host_fragment)
 
         appBarConfiguration = AppBarConfiguration(
-            setOf(R.id.admin_modificar_videojuego,
+            setOf(R.id.pantalla_principal,
                 R.id.editar_perfil,
-                R.id.mostrar_videojuego,
-                R.id.admin_insertar_videojuego
+                R.id.biblioteca_tab,
+                R.id.principal_administrador
             ), binding.drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)

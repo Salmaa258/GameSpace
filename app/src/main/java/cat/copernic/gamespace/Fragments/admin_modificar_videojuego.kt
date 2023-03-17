@@ -7,13 +7,15 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
+import android.widget.Spinner
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.navigation.findNavController
+import cat.copernic.gamespace.Activitys.MainActivity
 import cat.copernic.gamespace.R
 import cat.copernic.gamespace.databinding.FragmentAdminModificarVideojuegoBinding
 import cat.copernic.gamespace.databinding.FragmentEditarPerfilBinding
 
-
-// TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
@@ -39,6 +41,28 @@ class admin_modificar_videojuego : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        //Cridem el Spinner d'insertar
+        val spinner: Spinner = binding.spinnerGeneroModificar
+
+        // Inicializa el adaptador del Spinner con las opciones del archivo strings.xml
+        ArrayAdapter.createFromResource(
+            requireContext(),
+            R.array.generos_juegos,
+            android.R.layout.simple_spinner_item
+        ).also { adapter ->
+            // Especifica el diseño a usar cuando se despliega la lista de opciones
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            // Asigna el adaptador al Spinner
+            spinner.adapter = adapter
+        }
+
+
+        //Navegació a la pantalla principal d'administrador a travès del botó cancelar
+        binding.btnCancelarModificar.setOnClickListener { view ->
+            view.findNavController().navigate(R.id.principal_administrador)
+        }
+
+        //Obrir la galeria
         binding.imgVideojuegoModificar.setOnClickListener{
             pickPhotoFromGallery()
         }
@@ -68,6 +92,7 @@ class admin_modificar_videojuego : Fragment() {
         // Inflate the layout for this fragment
         binding = FragmentAdminModificarVideojuegoBinding.inflate(inflater, container, false)
         return binding.root
+        (requireActivity() as MainActivity).title = "Modificar Videojuego"
     }
 
     companion object {
@@ -79,7 +104,6 @@ class admin_modificar_videojuego : Fragment() {
          * @param param2 Parameter 2.
          * @return A new instance of fragment admin_modificar_videojuego.
          */
-        // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
             admin_modificar_videojuego().apply {

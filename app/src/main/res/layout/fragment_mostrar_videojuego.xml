@@ -26,7 +26,7 @@
                 android:layout_height="183dp"
                 android:layout_marginTop="@dimen/marginTop"
                 android:contentDescription="@string/descripcion_de_la_imagen_del_videojuego"
-                android:src="@drawable/logo_gs"
+                android:src="@drawable/mando"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 

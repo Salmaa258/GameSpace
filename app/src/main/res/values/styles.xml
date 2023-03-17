@@ -23,6 +23,17 @@
         <item name="backgroundTint">@color/purple_dark</item>
     </style>
 
+    <!--Search View-->
+    <style name="SearchView" parent="Widget.AppCompat.SearchView">
+        <item name="cornerRadius">@dimen/btn_corners</item>
+    </style>
+
+    <!--Alert Dialog Buttons-->
+    <style name="alertDialog" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="buttonBarNegativeButtonStyle">@color/blue_dark</item>
+        <item name="buttonBarPositiveButtonStyle">@color/blue_dark</item>
+    </style>
+
 
 
     <!--Modo oscuro-->

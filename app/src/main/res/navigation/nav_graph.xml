@@ -3,26 +3,58 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/editar_perfil">
+    app:startDestination="@id/pantalla_principal">
 
     <fragment
         android:id="@+id/mostrar_videojuego"
         android:name="cat.copernic.gamespace.Fragments.mostrar_videojuego"
         android:label="fragment_mostrar_videojuego"
-        tools:layout="@layout/fragment_mostrar_videojuego" />
+        tools:layout="@layout/fragment_mostrar_videojuego">
+        <argument
+            android:name="titulo"
+            app:argType="string" />
+        <argument
+            android:name="img_juego"
+            app:argType="integer" />
+    </fragment>
     <fragment
         android:id="@+id/editar_perfil"
         android:name="cat.copernic.gamespace.Fragments.editar_perfil"
-        android:label="fragment_editar_perfil"
         tools:layout="@layout/fragment_editar_perfil" />
     <fragment
         android:id="@+id/admin_insertar_videojuego"
         android:name="cat.copernic.gamespace.Fragments.admin_insertar_videojuego"
-        android:label="fragment_admin_insertar_videojuego"
         tools:layout="@layout/fragment_admin_insertar_videojuego" />
     <fragment
         android:id="@+id/admin_modificar_videojuego"
         android:name="cat.copernic.gamespace.Fragments.admin_modificar_videojuego"
-        android:label="fragment_admin_modificar_videojuego"
         tools:layout="@layout/fragment_admin_modificar_videojuego" />
+    <fragment
+        android:id="@+id/pantalla_principal"
+        android:name="cat.copernic.gamespace.Fragments.pantalla_principal" >
+        <action
+            android:id="@+id/action_pantalla_principal_to_mostrar_videojuego"
+            app:destination="@id/mostrar_videojuego"/>
+        <argument
+            android:name="titulo"
+            app:argType="string" />
+        <argument
+            android:name="img_juego"
+            app:argType="integer" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/biblioteca_tab"
+        android:name="cat.copernic.gamespace.Fragments.biblioteca_tab"
+        tools:layout="@layout/fragment_biblioteca_tab" />
+    <fragment
+        android:id="@+id/principal_administrador"
+        android:name="cat.copernic.gamespace.Fragments.principal_administrador" >
+        <action
+            android:id="@+id/action_principal_administrador_to_admin_insertar_videojuego"
+            app:destination="@id/admin_insertar_videojuego" />
+        <action
+            android:id="@+id/action_principal_administrador_to_admin_modificar_videojuego"
+            app:destination="@id/admin_modificar_videojuego" />
+    </fragment>
 </navigation>

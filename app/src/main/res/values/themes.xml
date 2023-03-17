@@ -19,11 +19,14 @@
         <!-- TextInputLayout -->
         <item name="textInputStyle">@style/TextInput</item>
 
-        <!--Spinner-->
+        <!-- Spinner -->
         <item name="spinnerStyle">@style/Spinner</item>
 
+        <!-- Search View -->
+        <item name="searchViewStyle">@style/SearchView</item>
 
-
+        <!-- Alert Dialog-->
+        <item name="alertDialogTheme">@style/alertDialog</item>
 
 
 

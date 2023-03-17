@@ -13,10 +13,10 @@ import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
+import cat.copernic.gamespace.Activitys.MainActivity
 
 import cat.copernic.gamespace.databinding.FragmentEditarPerfilBinding
 
-// TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
@@ -105,6 +105,7 @@ class editar_perfil : Fragment() {
         // Inflate the layout for this fragment
         binding = FragmentEditarPerfilBinding.inflate(inflater, container, false)
         return binding.root
+        (requireActivity() as MainActivity).title = "Editar Perfil"
     }
 
     companion object {
@@ -116,7 +117,7 @@ class editar_perfil : Fragment() {
          * @param param2 Parameter 2.
          * @return A new instance of fragment editar_perfil.
          */
-        // TODO: Rename and change types and number of parameters
+
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
             editar_perfil().apply {

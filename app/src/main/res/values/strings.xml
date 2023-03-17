@@ -24,9 +24,6 @@
     <string name="enviar">Enviar</string>
     <string name="cancelar">Cancelar</string>
 
-    <!--Pantalla inicio listado videojuegos-->
-    <string name="Search">Buscar videojuegos</string>
-
     <!--Pantalla Editar perfil-->
     <string name="cuenta">Cuenta</string>
     <string name="descripcion_img_perfil">Foto de perfil del usuario</string>
@@ -63,7 +60,35 @@
     <string name="administrador">Administrador</string>
     <string name="cerrar_sesion">Cerrar Sesión</string>
 
+    <!--Pantalla inicio listado videojuegos-->
+    <string name="Search">Buscar videojuegos</string>
+    <string name="juegos_populares">Juegos Populares</string>
+    <string name="titulo_videojuego">Titulo Videojuego</string>
+
+    <!--Pantalla Biblioteca-->
+    <string name="juegos_deseados">Juegos Deseados</string>
+    <string name="juegos_obtenidos">Juegos Obtenidos</string>
+
+    <!--Pantalla Biblioteca Tab Layouts-->
+    <string name="searchHintJd">Busca en tus deseados...</string>
+    <string name="searchHintJo">Busca en tu colección...</string>
+
+    <!--Pantalla Administrador-->
+    <string name="listado_de_los_videojuegos_totales">Listado de los videojuegos totales</string>
+    <string name="icono_de_eliminar_videojuego">icono de eliminar videojuego</string>
+    <string name="icono_de_editar_videojuego">icono de editar videojuego</string>
 
 
+    <!--SPINNER-->
+    <string-array name="generos_juegos">
+        <item>-</item>
+        <item>Acción</item>
+        <item>Arcade</item>
+        <item>Aventura</item>
+        <item>Deporte</item>
+        <item>Estrategia</item>
+        <item>Simulación</item>
+        <item>Survival</item>
+    </string-array>
 
 </resources>

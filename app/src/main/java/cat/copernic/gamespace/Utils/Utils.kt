@@ -12,6 +12,7 @@ import androidx.core.util.PatternsCompat
 import cat.copernic.gamespace.Activitys.RecuperarContrasena
 import cat.copernic.gamespace.Fragments.admin_insertar_videojuego
 import cat.copernic.gamespace.Fragments.editar_perfil
+import cat.copernic.gamespace.R
 import cat.copernic.gamespace.databinding.ActivityLoginBinding
 import cat.copernic.gamespace.databinding.ActivityRecuperarContrasenaBinding
 import cat.copernic.gamespace.databinding.ActivityRegistroBinding
@@ -126,6 +127,19 @@ class Utils {
             }
         }
 
+        //Verifica si l'usuari vol eliminar el videojoc
+        fun verificaElimina(context: Context, onConfirmed: () -> Unit){
+            val builder = AlertDialog.Builder(context)
+            builder.setTitle("Eliminar")
+            builder.setMessage("¿Estás seguro que quieres eliminar este videojuego?")
+            builder.setPositiveButton("Sí") { _, _ ->
+                onConfirmed()
+            }
+            builder.setNegativeButton("No") { _, _ ->
+            }
+            val alertDialog = builder.create()
+            alertDialog.show()
+        }
 
 
     }
