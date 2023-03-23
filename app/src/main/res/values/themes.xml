@@ -28,8 +28,9 @@
         <!-- Alert Dialog-->
         <item name="alertDialogTheme">@style/alertDialog</item>
 
-
-
-
     </style>
 </resources>
+
+
+
+

@@ -40,7 +40,7 @@
         android:textSize="@dimen/size_title"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_insertar_juego_admin" />
+        app:layout_constraintTop_toBottomOf="@+id/divider" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerJuegosAdmin"
@@ -48,7 +48,17 @@
         android:layout_height="500dp"
         android:layout_marginTop="@dimen/MarginTopS"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-        app:spanCount="2"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_juegos_totales_admin" />
+        app:layout_constraintTop_toBottomOf="@+id/txt_juegos_totales_admin"
+        app:spanCount="2" />
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="409dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="@dimen/marginTopB"
+        android:background="?android:attr/listDivider"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_insertar_juego_admin" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -5,17 +5,20 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.SearchView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import cat.copernic.gamespace.Activitys.MainActivity
 import cat.copernic.gamespace.R
 import cat.copernic.gamespace.adapter.AdminAdapter
 import cat.copernic.gamespace.adapter.PantallaPrincipalAdapter
+import cat.copernic.gamespace.data.dataPantallaPrincipal
 import cat.copernic.gamespace.dataLists.PantallaPrincipalList
 import cat.copernic.gamespace.databinding.FragmentPrincipalInicioBinding
 
@@ -32,8 +35,7 @@ private const val ARG_PARAM2 = "param2"
 class pantalla_principal : Fragment() {
     private var _binding: FragmentPrincipalInicioBinding? = null
     private val binding get()= _binding!!
-    private val args: pantalla_principalArgs by navArgs()
-
+    private lateinit var SearchView: SearchView
 
     private var param1: String? = null
     private var param2: String? = null
@@ -61,9 +63,41 @@ class pantalla_principal : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initRecyclerView(view)
+        initRecyclerView()
+
+        /*
+        SEARCHVIEW NO FUNCIONAL
+        val juegos = listOf<dataPantallaPrincipal>(
+        )
+
+        var recyclerView = binding.recyclerJuegos
+        val gridLayoutManager = GridLayoutManager(context, 2)
+        recyclerView.layoutManager = gridLayoutManager
+
+
+
+        var adapter = PantallaPrincipalAdapter(juegos)
+        recyclerView.adapter = adapter
+
+
+        val searchView = binding.searchView
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                adapter.filter.filter(newText)
+                gridLayoutManager.spanCount = if (newText.isNullOrEmpty()) 2 else 2
+                return true
+            }
+        })*/
+
+
 
     }
+
+
 
     companion object {
         /**
@@ -85,11 +119,12 @@ class pantalla_principal : Fragment() {
             }
     }
 
-    private fun initRecyclerView(view: View) {
+    private fun initRecyclerView() {
             //Amb el GridLayout controlem que apareixin 2 celes per fila
             binding.recyclerJuegos.layoutManager = GridLayoutManager(context, 2)
             binding.recyclerJuegos.adapter = PantallaPrincipalAdapter(PantallaPrincipalList.PantallaPrincipalList.toList())
 
     }
 }
+
 

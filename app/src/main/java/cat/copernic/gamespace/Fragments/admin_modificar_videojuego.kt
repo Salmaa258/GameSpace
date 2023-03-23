@@ -15,6 +15,8 @@ import cat.copernic.gamespace.Activitys.MainActivity
 import cat.copernic.gamespace.R
 import cat.copernic.gamespace.databinding.FragmentAdminModificarVideojuegoBinding
 import cat.copernic.gamespace.databinding.FragmentEditarPerfilBinding
+import com.google.firebase.storage.FirebaseStorage
+import java.util.*
 
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 private const val ARG_PARAM1 = "param1"
@@ -82,6 +84,22 @@ class admin_modificar_videojuego : Fragment() {
         if(result.resultCode == Activity.RESULT_OK){
             val data = result.data?.data
             binding.imgVideojuegoModificar.setImageURI(data)
+
+            //STORAGE
+            //obtenim la referencia a la imatge que volem modificar
+            val storageRef = FirebaseStorage.getInstance().reference
+            //agafem el nom del videojoc que nosaltres introduirem per posar-lo al nom de l'imatge
+            var text = binding.txtInputEditNombreModificar.text.toString() + ".jpeg"
+            //establim la ruta on s'emmagatzemarà l'imatge i establim el nom
+            val imageRef = storageRef.child("imatges/videojocs").child(text)
+            if (data != null) {
+                //modifiquem l'imatge
+                imageRef.putFile(data).addOnSuccessListener { taskSnapshot ->
+                    //l'imatge s'ha pujat correctament
+                }.addOnFailureListener { exception ->
+                    //s'ha produit un error
+                }
+            }
         }
     }
 

@@ -77,6 +77,7 @@
     <string name="listado_de_los_videojuegos_totales">Listado de los videojuegos totales</string>
     <string name="icono_de_eliminar_videojuego">icono de eliminar videojuego</string>
     <string name="icono_de_editar_videojuego">icono de editar videojuego</string>
+    <string name="tipo_de_genero">Tipo de genero</string>
 
 
     <!--SPINNER-->

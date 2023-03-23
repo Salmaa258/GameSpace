@@ -74,4 +74,10 @@ dependencies {
     //SafeArgs
     apply plugin: "androidx.navigation.safeargs.kotlin"
 
+    //Firestore
+    implementation 'com.google.firebase:firebase-firestore-ktx:24.4.0'
+
+    //Storage
+    implementation 'com.google.firebase:firebase-storage-ktx: 20.1.0'
+
 }

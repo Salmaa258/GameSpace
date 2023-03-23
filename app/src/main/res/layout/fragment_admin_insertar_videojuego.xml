@@ -47,7 +47,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/MarginTopSmall"
-                app:errorEnabled="true"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txt_nombre_videojuego">
 
@@ -141,14 +140,6 @@
                 app:layout_constraintTop_toBottomOf="@+id/txt_genero"
                 tools:ignore="SpeakableTextPresentCheck" />
 
-            <TextView
-                android:id="@+id/txt_generos"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/MarginTopSmall"
-                android:textSize="@dimen/size_title3"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/spinner_genero_insertar" />
 
             <Button
                 android:id="@+id/btn_cancelar_insert"
@@ -159,7 +150,7 @@
                 android:textSize="@dimen/size_title3"
                 app:layout_constraintEnd_toStartOf="@+id/btn_crear"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txt_generos"
+                app:layout_constraintTop_toBottomOf="@+id/spinner_genero_insertar"
                 tools:ignore="TextContrastCheck" />
 
             <Button

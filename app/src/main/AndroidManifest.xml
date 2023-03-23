@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools" >
     <!--Permisos per a utilitzar la camara-->
     <uses-feature android:name="android.hardware.camera" />
+    <!--Permisos per utilitzar la galeria-->
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application

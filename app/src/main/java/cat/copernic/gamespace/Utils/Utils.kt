@@ -1,22 +1,12 @@
 package cat.copernic.gamespace.Utils
 
-import android.app.Activity
 import android.content.Context
-import android.content.Intent
-import android.graphics.Bitmap
-import android.provider.MediaStore
-import androidx.activity.result.ActivityResult
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
 import androidx.core.util.PatternsCompat
-import cat.copernic.gamespace.Activitys.RecuperarContrasena
 import cat.copernic.gamespace.Fragments.admin_insertar_videojuego
-import cat.copernic.gamespace.Fragments.editar_perfil
-import cat.copernic.gamespace.R
 import cat.copernic.gamespace.databinding.ActivityLoginBinding
 import cat.copernic.gamespace.databinding.ActivityRecuperarContrasenaBinding
 import cat.copernic.gamespace.databinding.ActivityRegistroBinding
-import cat.copernic.gamespace.databinding.FragmentEditarPerfilBinding
 
 class Utils {
     companion object{
@@ -140,6 +130,28 @@ class Utils {
             val alertDialog = builder.create()
             alertDialog.show()
         }
+
+        //Comprovar que el camp de Titol a l'hora d'insertar el videjoc no està buit.
+        fun titolNull(context: Context){
+            val builder = AlertDialog.Builder(context)
+            builder.setTitle("Error")
+            builder.setMessage("El título del videojuego no puede estar vacío")
+            builder.setPositiveButton("Aceptar", null)
+            val dialog = builder.create()
+            dialog.show()
+        }
+
+        //Avisar si un joc existeix
+        fun jocExistent(context: Context){
+            val builder = AlertDialog.Builder(context)
+            builder.setTitle("Error")
+            builder.setMessage("El videojuego ya existe")
+            builder.setPositiveButton("Aceptar", null)
+            val dialog = builder.create()
+            dialog.show()
+        }
+
+
 
 
     }

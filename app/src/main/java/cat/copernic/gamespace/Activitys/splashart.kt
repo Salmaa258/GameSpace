@@ -16,8 +16,12 @@ class splashart : AppCompatActivity() {
         if(supportActionBar != null)
             supportActionBar!!.hide()
 
+        //XML a mostrar
         setContentView(R.layout.activity_splashart)
+
+        //Tiempo que se mostrará la pantalla
         timer.schedule(1200) {
+            //Activity que se mostrará finalizado el tiempo
             var intent = Intent(this@splashart, Login::class.java)
             startActivity(intent)
             finish()
