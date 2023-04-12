@@ -117,20 +117,6 @@ class Utils {
             }
         }
 
-        //Verifica si l'usuari vol eliminar el videojoc
-        fun verificaElimina(context: Context, onConfirmed: () -> Unit){
-            val builder = AlertDialog.Builder(context)
-            builder.setTitle("Eliminar")
-            builder.setMessage("¿Estás seguro que quieres eliminar este videojuego?")
-            builder.setPositiveButton("Sí") { _, _ ->
-                onConfirmed()
-            }
-            builder.setNegativeButton("No") { _, _ ->
-            }
-            val alertDialog = builder.create()
-            alertDialog.show()
-        }
-
         //Comprovar que el camp de Titol a l'hora d'insertar el videjoc no està buit.
         fun titolNull(context: Context){
             val builder = AlertDialog.Builder(context)
@@ -151,6 +137,15 @@ class Utils {
             dialog.show()
         }
 
+        //Comprovar que el camp de l'imatge a l'hora d'insertar el videjoc no està buit.
+        fun imatgeNull(context: Context){
+            val builder = AlertDialog.Builder(context)
+            builder.setTitle("Error")
+            builder.setMessage("Inserta una imágen para la portada del videojuego")
+            builder.setPositiveButton("Aceptar", null)
+            val dialog = builder.create()
+            dialog.show()
+        }
 
 
 

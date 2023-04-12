@@ -15,7 +15,7 @@
             app:argType="string" />
         <argument
             android:name="img_juego"
-            app:argType="integer" />
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/editar_perfil"
@@ -26,12 +26,22 @@
         android:id="@+id/admin_insertar_videojuego"
         android:name="cat.copernic.gamespace.Fragments.admin_insertar_videojuego"
         android:label="Insertar Videojuego"
-        tools:layout="@layout/fragment_admin_insertar_videojuego" />
+        tools:layout="@layout/fragment_admin_insertar_videojuego" >
+
+    </fragment>
     <fragment
         android:id="@+id/admin_modificar_videojuego"
         android:name="cat.copernic.gamespace.Fragments.admin_modificar_videojuego"
         android:label="Modificar Videojuego"
-        tools:layout="@layout/fragment_admin_modificar_videojuego" />
+        tools:layout="@layout/fragment_admin_modificar_videojuego" >
+
+        <argument
+            android:name="idDocument"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_admin_modificar_videojuego_to_principal_administrador"
+            app:destination="@id/principal_administrador" />
+    </fragment>
     <fragment
         android:id="@+id/pantalla_principal"
         android:name="cat.copernic.gamespace.Fragments.pantalla_principal"
@@ -44,7 +54,7 @@
             app:argType="string" />
         <argument
             android:name="img_juego"
-            app:argType="integer" />
+            app:argType="string" />
 
     </fragment>
     <fragment
@@ -62,5 +72,8 @@
         <action
             android:id="@+id/action_principal_administrador_to_admin_modificar_videojuego"
             app:destination="@id/admin_modificar_videojuego" />
+        <argument
+            android:name="idDocument"
+            app:argType="string" />
     </fragment>
 </navigation>

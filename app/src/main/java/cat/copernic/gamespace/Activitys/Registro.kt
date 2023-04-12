@@ -93,7 +93,6 @@ class Registro : AppCompatActivity() {
             correo = binding.txtInputEditCorreoRegistro.text.toString(),
             admin = false
         )
-
         auth.createUserWithEmailAndPassword(correo,contra).addOnCompleteListener(this){task ->
             if(task.isSuccessful){
 

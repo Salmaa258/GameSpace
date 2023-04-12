@@ -1,8 +1,11 @@
 package cat.copernic.gamespace.adapter
 
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
 import android.widget.Filter
 import android.widget.Filterable
 import androidx.navigation.findNavController
@@ -11,18 +14,25 @@ import androidx.recyclerview.widget.RecyclerView
 import cat.copernic.gamespace.Fragments.pantalla_principalDirections
 import cat.copernic.gamespace.R
 import cat.copernic.gamespace.data.dataPantallaPrincipal
+import cat.copernic.gamespace.dataLists.PantallaPrincipalList
 import cat.copernic.gamespace.databinding.ItemPantallaPrincipalBinding
+import cat.copernic.gamespace.model.videojuegos
+import com.bumptech.glide.Glide
 import java.util.*
 
 
 
-class PantallaPrincipalAdapter(private val PantallaPrincipalList:List<dataPantallaPrincipal>)  : RecyclerView.Adapter<PantallaPrincipalAdapter.gamesholder>(),
-    Filterable {
+class PantallaPrincipalAdapter(private val PantallaPrincipalList:MutableList<dataPantallaPrincipal>)  : RecyclerView.Adapter<PantallaPrincipalAdapter.gamesholder>(){
+
+    /*private var filteredList: MutableList<dataPantallaPrincipal> = ArrayList(PantallaPrincipalList)
+
+    init {
+        filteredList = PantallaPrincipalList
+    }*/
 
     inner class gamesholder(val binding: ItemPantallaPrincipalBinding): RecyclerView.ViewHolder(binding.root)
     private var binding: ItemPantallaPrincipalBinding? = null
 
-    private var filteredList: List<dataPantallaPrincipal> = PantallaPrincipalList
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): gamesholder {
         val binding = ItemPantallaPrincipalBinding.inflate(LayoutInflater.from(parent.context),parent, false)
@@ -33,7 +43,9 @@ class PantallaPrincipalAdapter(private val PantallaPrincipalList:List<dataPantal
         with(holder) {
             with(PantallaPrincipalList[position]) {
                 binding.txtGame.text = this.txt_game
-                binding.imageGame.setImageResource(this.img_game)
+                Glide.with(binding.root)
+                    .load(this.img_game)
+                    .into(binding.imageGame)
             }
             //Safe Args
             binding.CardGames.setOnClickListener{ view ->
@@ -44,35 +56,40 @@ class PantallaPrincipalAdapter(private val PantallaPrincipalList:List<dataPantal
 
     }
 
-    private fun navigation(view: View, title: String, imageResId: Int ){
+    private fun navigation(view: View, title: String, imageResId: String ){
         val action = pantalla_principalDirections.actionPantallaPrincipalToMostrarVideojuego(title, imageResId)
         view.findNavController().navigate(action)
     }
 
-    override fun getItemCount(): Int {
-        return filteredList.size
+    override fun getItemCount(): Int = PantallaPrincipalList.size
+
+    /*fun filter(query: String) {
+        filteredList.clear()
+        filteredList.addAll(if (query.isEmpty()) {
+            ArrayList(PantallaPrincipalList)
+        } else {
+            PantallaPrincipalList.filter { it.txt_game.toLowerCase().contains(query.toLowerCase()) }
+        })
+        notifyDataSetChanged()
     }
 
-    //SearchView
-    override fun getFilter(): Filter {
-        return object : Filter() {
-            override fun performFiltering(constraint: CharSequence?): FilterResults {
-                val queryString = constraint?.toString()?.toLowerCase(Locale.getDefault())
-                val filterResults = FilterResults()
-                filterResults.values = if (queryString == null || queryString.isEmpty()) {
-                    PantallaPrincipalList
-                } else {
-                    PantallaPrincipalList.filter {
-                        it.txt_game.toLowerCase(Locale.getDefault()).contains(queryString)
-                    }
-                }
-                return filterResults
-            }
+    fun updateList(newList: MutableList<dataPantallaPrincipal>) {
+        filteredList = newList
+        notifyDataSetChanged()
+    }
 
-            override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
-                filteredList = results?.values as List<dataPantallaPrincipal>
-                notifyDataSetChanged()
-            }
+    val searchView = findViewById<SearchView>(R.id.search_view)
+    searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+        override fun onQueryTextSubmit(query: String?): Boolean {
+            return false
         }
-    }
+
+        override fun onQueryTextChange(newText: String?): Boolean {
+            // Aquí puedes llamar a tu función de búsqueda
+            return true
+        }
+    })*/
+
+
+
 }

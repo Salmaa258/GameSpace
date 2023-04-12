@@ -78,6 +78,7 @@
     <string name="icono_de_eliminar_videojuego">icono de eliminar videojuego</string>
     <string name="icono_de_editar_videojuego">icono de editar videojuego</string>
     <string name="tipo_de_genero">Tipo de genero</string>
+    <string name="no_hay_videojuegos">No hay videojuegos</string>
 
 
     <!--SPINNER-->

@@ -1,6 +1,6 @@
 package cat.copernic.gamespace.data
 
 data class dataBiblioJo (
-    val img_game: Int,
-    val txt_game: String
+    var img_game: String = "",
+    var txt_game: String = ""
 )

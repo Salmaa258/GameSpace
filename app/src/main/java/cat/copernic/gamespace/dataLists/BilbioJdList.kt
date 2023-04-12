@@ -6,9 +6,6 @@ import cat.copernic.gamespace.data.dataBiblioJo
 
 class BiblioJdList {
     companion object{
-        val BiblioJdList = listOf<dataBiblioJd>(
-            dataBiblioJd(R.drawable.mando, "Titulo Videojuego")
-
-            )
+        val BiblioJdList = listOf<dataBiblioJd>().toMutableList()
     }
 }

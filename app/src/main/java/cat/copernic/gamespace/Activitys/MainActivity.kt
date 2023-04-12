@@ -85,9 +85,12 @@ class MainActivity : AppCompatActivity() {
                 .addOnSuccessListener { documentSnapshot ->
                     //verifiquem si existeix el document
                     if (documentSnapshot.exists()) {
+                        //agafem l'objecte d'usuaris
                         val usuario = documentSnapshot.toObject(usuarios::class.java)
                         val esAdmin = usuario?.admin ?: false
+                        //fem referencia al menu
                         val menu = binding.navView.menu
+                        //posem l'item visible dependen de si es admin o no
                         menu.findItem(R.id.principal_administrador).isVisible = esAdmin
                     }
                 }

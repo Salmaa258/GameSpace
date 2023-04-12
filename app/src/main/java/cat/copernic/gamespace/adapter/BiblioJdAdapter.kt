@@ -2,11 +2,13 @@ package cat.copernic.gamespace.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
+import cat.copernic.gamespace.R
 import cat.copernic.gamespace.data.dataBiblioJd
 import cat.copernic.gamespace.databinding.ItemBiblioJdBinding
 
-class BiblioJdAdapter(private val BiblioJdList:List<dataBiblioJd>)  : RecyclerView.Adapter<BiblioJdAdapter.gamesholder>(){
+class BiblioJdAdapter(private val BiblioJdList:MutableList<dataBiblioJd>)  : RecyclerView.Adapter<BiblioJdAdapter.gamesholder>(){
 
     inner class gamesholder(val binding: ItemBiblioJdBinding): RecyclerView.ViewHolder(binding.root)
     private var binding: ItemBiblioJdBinding? = null
@@ -20,9 +22,10 @@ class BiblioJdAdapter(private val BiblioJdList:List<dataBiblioJd>)  : RecyclerVi
         with(holder) {
             with(BiblioJdList[position]) {
                 binding.txtGame.text = this.txt_game
-                binding.imageGame.setImageResource(this.img_game)
+                com.bumptech.glide.Glide.with(binding.root)
+                    .load(this.img_game)
+                    .into(binding.imageGame)
             }
-
         }
 
 

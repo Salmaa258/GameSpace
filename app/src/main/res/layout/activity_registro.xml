@@ -129,7 +129,7 @@
                 android:id="@+id/txt_contrasena_registro"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/MarginTopS"
+                android:layout_marginTop="@dimen/MarginTopSmall"
                 android:text="@string/contrasena"
                 android:textColor="@color/black"
                 android:textSize="@dimen/size_title3"

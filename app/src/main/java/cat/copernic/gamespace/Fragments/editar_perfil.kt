@@ -3,9 +3,11 @@ package cat.copernic.gamespace.Fragments
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
-import android.graphics.Bitmap
+import android.graphics.*
+import android.media.ExifInterface
 import android.os.Bundle
 import android.provider.MediaStore
+import android.text.Editable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,11 +16,25 @@ import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import cat.copernic.gamespace.Activitys.MainActivity
 
 import cat.copernic.gamespace.databinding.FragmentEditarPerfilBinding
+import cat.copernic.gamespace.model.usuarios
+import cat.copernic.gamespace.model.videojuegos
+import com.google.android.material.snackbar.Snackbar
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.tasks.await
+import kotlinx.coroutines.withContext
 import java.io.ByteArrayOutputStream
+import java.io.File
 
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 private const val ARG_PARAM1 = "param1"
@@ -33,6 +49,9 @@ private const val ARG_PARAM2 = "param2"
 class editar_perfil : Fragment() {
 
     private lateinit var binding: FragmentEditarPerfilBinding
+    private var bd = FirebaseFirestore.getInstance()
+    private lateinit var auth: FirebaseAuth
+    private lateinit var user: usuarios
 
     private var param1: String? = null
     private var param2: String? = null
@@ -43,13 +62,27 @@ class editar_perfil : Fragment() {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
         }
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        lifecycleScope.launch{
+            withContext(Dispatchers.IO){
+                ponerUsuario()
+            }
+        }
+
         binding.imgPerfil.setOnClickListener{
             obreCamara(context)
+        }
+
+        //deshabilitem el camp del correu electrònic per a que no sigui editable
+        binding.txtInputEditCorreoPerfil.isEnabled = false
+
+        binding.btnGuardar.setOnClickListener {
+            modificaUsuari(view)
         }
     }
 
@@ -93,7 +126,7 @@ class editar_perfil : Fragment() {
             //obtenim la referencia a la imatge que volem pujar
             val storageRef = FirebaseStorage.getInstance().reference
             //agafem el nom del usuari que nosaltres introduirem per posar-lo al nom de l'imatge
-            var text = binding.txtInputEditNombrePerfil.text.toString() + ".jpeg"
+            var text =  FirebaseAuth.getInstance().currentUser?.email?: "" + ".jpeg"
             //establim la ruta on s'emmagatzemarà l'imatge i establim el nom
             val imageRef = storageRef.child("imatges/usuaris").child(text)
             if (data != null) {
@@ -120,7 +153,7 @@ class editar_perfil : Fragment() {
             //obtenim la referencia a la imatge que volem pujar
             val storageRef = FirebaseStorage.getInstance().reference
             //agafem el nom del usuari que nosaltres introduirem per posar-lo al nom de l'imatge
-            val text = binding.txtInputEditNombrePerfil.text.toString() + ".jpeg"
+            val text = FirebaseAuth.getInstance().currentUser?.email?: "" + ".jpeg"
             //establim la ruta on s'emmagatzemarà l'imatge i establim el nom
             val imagesRef = storageRef.child("imatges/usuaris").child(text)
 
@@ -137,7 +170,50 @@ class editar_perfil : Fragment() {
             }
 
         }
+
     }
+
+    //Llegim i posem les dades de la base de dades del usuari
+    fun ponerUsuario() {
+        //Imatge
+        //Establim l'instancia de Firebase de l'usuari que està autenticat
+        val text = FirebaseAuth.getInstance().currentUser?.email ?: "" + ".jpeg"
+        //Agafa l'instancia de Firebase amb la ruta de de colecció
+        val storageRef = FirebaseStorage.getInstance().reference.child("imatges/usuaris/$text")
+        //Es crea un fitxer temporal per guardar l'imatge descarregada
+        val localfile = File.createTempFile("tempImage", "jpeg")
+        //quan s'agafa correctamen l'imatge
+        storageRef.getFile(localfile).addOnSuccessListener {
+
+            //es decodifica el fitxer en un objecte Bitmap per poder ser mostrat
+            val bitmap = BitmapFactory.decodeFile(localfile.absolutePath)
+
+            // Actualizar la vista de la imagen
+            binding.imgPerfil.setImageBitmap(bitmap)
+        }
+
+        //Altres dades
+        //llegim les dades del usuari i les fiquem dins els camps de l'app
+        auth = Firebase.auth
+        var actual = auth.currentUser
+        bd.collection("Usuaris").document(actual!!.email.toString()).get().addOnSuccessListener {
+            binding.txtInputEditNombrePerfil.setText(it.get("nombre").toString())
+            binding.txtInputEditApellidosPerfil.setText(it.get("apellidos").toString())
+            binding.txtInputEditCorreoPerfil.setText(it.get("correo").toString())
+        }
+    }
+
+    fun modificaUsuari(view: View){
+        var actual = auth.currentUser
+
+        bd.collection("Usuaris").document(actual!!.email.toString()).update(
+            "nombre", binding.txtInputEditNombrePerfil.text.toString(),
+            "apellidos", binding.txtInputEditApellidosPerfil.text.toString()
+        ).addOnSuccessListener {
+            Snackbar.make(view, "El usuario se ha guardado correctamente", Snackbar.LENGTH_LONG).show()
+        }
+    }
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -169,4 +245,5 @@ class editar_perfil : Fragment() {
             }
     }
 }
+
 

@@ -121,45 +121,16 @@
                     tools:ignore="SpeakableTextPresentCheck" />
             </com.google.android.material.textfield.TextInputLayout>
 
-            <TextView
-                android:id="@+id/txt_contrasena_perfil"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/MarginTopS"
-                android:text="@string/contrasena"
-                android:textSize="@dimen/size_title2"
-                android:textColor="@color/black"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txt_input_correo_perfil" />
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/txt_input_contrasena_perfil"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/MarginTopSmall"
-                app:endIconDrawable="@drawable/password_toogle"
-                app:endIconMode="password_toggle"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txt_contrasena_perfil">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/txt_input_edit_contrasena_perfil"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="textPassword"
-                    tools:ignore="SpeakableTextPresentCheck" />
-            </com.google.android.material.textfield.TextInputLayout>
-
             <Button
                 android:id="@+id/btn_guardar"
                 android:layout_width="@dimen/btn_width"
                 android:layout_height="@dimen/btn_height"
-                android:layout_marginTop="@dimen/marginTopB"
+                android:layout_marginTop="@dimen/marginTopBig"
                 android:text="@string/guardar"
                 android:textSize="@dimen/size_title2"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txt_input_contrasena_perfil"
+                app:layout_constraintTop_toBottomOf="@+id/txt_input_correo_perfil"
                 tools:ignore="TextContrastCheck" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

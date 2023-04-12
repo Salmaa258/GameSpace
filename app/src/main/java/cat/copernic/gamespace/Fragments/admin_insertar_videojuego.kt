@@ -3,7 +3,9 @@ package cat.copernic.gamespace.Fragments
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.graphics.drawable.BitmapDrawable
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -15,6 +17,7 @@ import androidx.navigation.findNavController
 import cat.copernic.gamespace.Activitys.MainActivity
 import cat.copernic.gamespace.R
 import cat.copernic.gamespace.Utils.Utils
+import cat.copernic.gamespace.adapter.AdminAdapter
 import cat.copernic.gamespace.databinding.FragmentAdminInsertarVideojuegoBinding
 import cat.copernic.gamespace.model.videojuegos
 import com.google.android.material.snackbar.Snackbar
@@ -36,7 +39,9 @@ private const val ARG_PARAM1 = "param1"
 class admin_insertar_videojuego : Fragment() {
     private lateinit var binding: FragmentAdminInsertarVideojuegoBinding
     private lateinit var auth: FirebaseAuth
+    private lateinit var adaptador: AdminAdapter
     private val db = FirebaseFirestore.getInstance()
+    private var imagenSeleccionada = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -71,6 +76,12 @@ class admin_insertar_videojuego : Fragment() {
             view.findNavController().navigate(R.id.principal_administrador)
         }
 
+
+        //Obrir la galeria
+        binding.imgVideojuego.setOnClickListener{
+            pickPhotoFromGallery()
+        }
+
         binding.btnCrear.setOnClickListener {
             //Assignem els camps als atributs del objecte videojoc
             val juego = videojuegos(
@@ -83,28 +94,28 @@ class admin_insertar_videojuego : Fragment() {
             if(juego.títol.isNullOrEmpty()){
                 //Cridem la funció que es troba al Utils per mostrar el AlertDialog
                 Utils.titolNull(requireContext())
+            }else if(!imagenSeleccionada){
+                Utils.imatgeNull(requireContext())
             }else{
                 db.collection("Videojocs").document(juego.títol).get()
-                .addOnSuccessListener { documentSnapshot ->
-                    if(documentSnapshot.exists()){
-                        Utils.jocExistent(requireContext())
-                    }else{
-                        //Creem la colecció "videojocs", establim document amb el nom del joc i li afegim els atributs corresponents
-                         db.collection("Videojocs").document(juego.títol).set(juego)
-                         .addOnSuccessListener {
-                         //tornem a la pantalla principal de l'administrador
-                         view.findNavController().navigate(R.id.principal_administrador)
-                         }
+                    .addOnSuccessListener { documentSnapshot ->
+                        if(documentSnapshot.exists()){
+                            Utils.jocExistent(requireContext())
+                        }else{
+                            //Creem la colecció "videojocs", establim document amb el nom del joc i li afegim els atributs corresponents
+                            db.collection("Videojocs").document(juego.títol).set(juego)
+                                .addOnSuccessListener {
+                                    //tornem a la pantalla principal de l'administrador
+                                    view.findNavController().navigate(R.id.principal_administrador)
+                                }
+                        }
                     }
-                }
             }
         }
 
-        //Obrir la galeria
-        binding.imgVideojuego.setOnClickListener{
-            pickPhotoFromGallery()
-        }
     }
+
+
 
     //Obre la galeria i permet seleccionar una foto
     fun pickPhotoFromGallery() {
@@ -121,6 +132,7 @@ class admin_insertar_videojuego : Fragment() {
         if(result.resultCode == Activity.RESULT_OK){
             val data = result.data?.data
             binding.imgVideojuego.setImageURI(data)
+            imagenSeleccionada = true
 
             //STORAGE
             //obtenim la referencia a la imatge que volem pujar
