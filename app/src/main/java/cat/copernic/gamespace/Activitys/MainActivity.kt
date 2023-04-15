@@ -3,13 +3,7 @@ package cat.copernic.gamespace.Activitys
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.view.Menu
-import android.view.MenuItem
-import androidx.drawerlayout.widget.DrawerLayout
-import androidx.navigation.NavController
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
@@ -19,7 +13,6 @@ import cat.copernic.gamespace.databinding.ActivityMainBinding
 import cat.copernic.gamespace.model.usuarios
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
@@ -29,9 +22,6 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var auth: FirebaseAuth
-    private var db = FirebaseAuth.getInstance()
-    private var bd = FirebaseFirestore.getInstance()
-
 
     private var isAdmin = false
 
@@ -95,6 +85,7 @@ class MainActivity : AppCompatActivity() {
                     }
                 }
         }
+
     }
 
     override fun onSupportNavigateUp(): Boolean {

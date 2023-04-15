@@ -12,9 +12,10 @@
         android:id="@+id/img_logo_login"
         android:layout_width="@dimen/logo_width"
         android:layout_height="@dimen/logo_height"
-        android:layout_marginTop="@dimen/marginTopBig"
+        android:layout_marginTop="40dp"
         android:contentDescription="@string/logo_principal_de_la_aplicacion"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/logo2" />

@@ -22,7 +22,7 @@ import java.util.*
 
 
 
-class PantallaPrincipalAdapter(private val PantallaPrincipalList:MutableList<dataPantallaPrincipal>)  : RecyclerView.Adapter<PantallaPrincipalAdapter.gamesholder>(){
+class PantallaPrincipalAdapter(private var PantallaPrincipalList:MutableList<dataPantallaPrincipal>)  : RecyclerView.Adapter<PantallaPrincipalAdapter.gamesholder>(){
 
     /*private var filteredList: MutableList<dataPantallaPrincipal> = ArrayList(PantallaPrincipalList)
 
@@ -59,6 +59,11 @@ class PantallaPrincipalAdapter(private val PantallaPrincipalList:MutableList<dat
     private fun navigation(view: View, title: String, imageResId: String ){
         val action = pantalla_principalDirections.actionPantallaPrincipalToMostrarVideojuego(title, imageResId)
         view.findNavController().navigate(action)
+    }
+
+    fun setItemList(itemList: MutableList<dataPantallaPrincipal>) {
+        this.PantallaPrincipalList = itemList
+        notifyDataSetChanged()
     }
 
     override fun getItemCount(): Int = PantallaPrincipalList.size

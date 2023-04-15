@@ -21,6 +21,7 @@ import cat.copernic.gamespace.databinding.FragmentPrincipalAdministradorBinding
 import cat.copernic.gamespace.model.videojuegos
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
+import org.checkerframework.checker.units.qual.s
 
 
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -101,7 +102,7 @@ class principal_administrador : Fragment() {
         adaptador = AdminAdapter(userList)
 
 
-        db.collection("Videojocs").get().addOnSuccessListener { documents ->
+        db.collection("Videojocs").orderBy("títol").get().addOnSuccessListener { documents ->
             for (document in documents) {
                 val wallItem = document.toObject(dataAdmin::class.java)
                 wallItem.titulo = document["títol"].toString()
@@ -111,6 +112,8 @@ class principal_administrador : Fragment() {
                 storageRef.downloadUrl.addOnSuccessListener { uri ->
                     wallItem.imagen = uri.toString()
                     userList.add(wallItem)
+                    //ordenem la llista per ordre alfabètic per als jocs que s'afegeixen nous
+                    userList.sortBy { it.titulo }
                     adaptador.notifyDataSetChanged() // Notifica al adaptador que se ha añadido un nuevo elemento
                 }
             }

@@ -105,7 +105,7 @@ class mostrar_videojuego : Fragment() {
             var imgAfegir = false
             var imgPrinciapalAfegir = binding.imgAnadir
 
-            // Agrega un listener de clics a la ImageView
+            // Agrega un listener de clics a la ImageView de l'imatge afegir
             imgPrinciapalAfegir.setOnClickListener {
                 // Cambia la imagen de la ImageView según el valor de la variable de estado
                 if (!imgAfegir) {

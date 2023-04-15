@@ -39,6 +39,6 @@
     <dimen name="search_height">60dp</dimen>
 
     <!-- Recycer View -->
-    <dimen name="recyclerView_heigh">550dp</dimen>
+    <dimen name="recyclerView_heigh">530dp</dimen>
 
 </resources>

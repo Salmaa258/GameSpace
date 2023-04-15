@@ -91,7 +91,7 @@ class pantalla_principal : Fragment() {
         adaptador = PantallaPrincipalAdapter(JuegosList)
 
 
-        db.collection("Videojocs").get().addOnSuccessListener { documents ->
+        db.collection("Videojocs").orderBy("títol").get().addOnSuccessListener { documents ->
             for (document in documents) {
                 val wallItem = document.toObject(dataPantallaPrincipal::class.java)
                 wallItem.txt_game = document["títol"].toString()
@@ -101,6 +101,8 @@ class pantalla_principal : Fragment() {
                 storageRef.downloadUrl.addOnSuccessListener { uri ->
                     wallItem.img_game = uri.toString()
                     JuegosList.add(wallItem)
+                    //ordenem la llista per ordre alfabètic per als jocs que s'afegeixen nous
+                    JuegosList.sortBy { it.txt_game }
                     adaptador.notifyDataSetChanged() // Notifica al adaptador que se ha añadido un nuevo elemento
                 }
             }

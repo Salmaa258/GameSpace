@@ -37,6 +37,7 @@ class Biblio_Jo : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -59,12 +60,15 @@ class Biblio_Jo : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         initRecyclerView(view)
 
+        auth = Firebase.auth
+        var actual = auth.currentUser
+
         //controlem si hi ha o no videojocs i avisem
         val recycler = binding.recyclerBiblioJo
         val textNoHay = binding.txtNoHayJuegos
 
         //agafem la instancia de firestore de la colecció de videojocs
-        val juegosRef = FirebaseFirestore.getInstance().collection("Videojocs")
+        val juegosRef = bd.collection("Usuaris").document(actual!!.email.toString()).collection("Juegos obtenidos")
 
         //agafem el numero total de videojocs que hi ha
         juegosRef.get().addOnSuccessListener { querySnapshot ->
@@ -88,7 +92,6 @@ class Biblio_Jo : Fragment() {
         JuegosList = ArrayList<dataBiblioJo>()
         adaptador = BiblioJoAdapter(JuegosList)
 
-
         auth = Firebase.auth
         var actual = auth.currentUser
 
@@ -102,6 +105,8 @@ class Biblio_Jo : Fragment() {
                 storageRef.downloadUrl.addOnSuccessListener { uri ->
                     wallItem.img_game = uri.toString()
                     JuegosList.add(wallItem)
+                    //ordenem la llista per ordre alfabètic per als jocs que s'afegeixen nous
+                    JuegosList.sortBy { it.txt_game }
                     adaptador.notifyDataSetChanged() // Notifica al adaptador que se ha añadido un nuevo elemento
                 }
             }
