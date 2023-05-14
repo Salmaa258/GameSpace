@@ -1,22 +1,21 @@
 package cat.copernic.gamespace.Fragments
 
+import android.content.ActivityNotFoundException
+import android.content.Context
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.EditText
 import android.widget.SearchView
+import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
-import cat.copernic.gamespace.Activitys.MainActivity
-import cat.copernic.gamespace.R
 import cat.copernic.gamespace.adapter.PantallaPrincipalAdapter
 import cat.copernic.gamespace.data.dataPantallaPrincipal
 import cat.copernic.gamespace.dataLists.PantallaPrincipalList
 import cat.copernic.gamespace.databinding.FragmentPrincipalInicioBinding
-import cat.copernic.gamespace.model.videojuegos
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 
@@ -32,10 +31,15 @@ private const val ARG_PARAM2 = "param2"
  */
 class pantalla_principal : Fragment() {
     private lateinit var binding: FragmentPrincipalInicioBinding
-    private lateinit var SearchView: SearchView
     private lateinit var adaptador: PantallaPrincipalAdapter
     private lateinit var JuegosList: MutableList<dataPantallaPrincipal>
     private val db = FirebaseFirestore.getInstance()
+    private var query: String = ""
+    private var PantallaPrincipalListOriginal = ArrayList<dataPantallaPrincipal>()
+    private lateinit var searchView: SearchView
+
+
+
 
     private var param1: String? = null
     private var param2: String? = null
@@ -54,10 +58,7 @@ class pantalla_principal : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentPrincipalInicioBinding.inflate(inflater)
-        val view = binding.root
-        return view
-        (requireActivity() as MainActivity).title = "Inicio"
-
+        return binding.root
 
     }
 
@@ -65,18 +66,35 @@ class pantalla_principal : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         initRecyclerView()
 
+        //SearchView
+        searchView = binding.searchView
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String): Boolean {
+                adaptador.filter(newText)
+                return false
+            }
+        })
+
+
         val recycler = binding.recyclerJuegos
         val textNoHay = binding.txtNoHay
 
-
+        //Agafa instancia de la colecció de Videojocs
         val juegosRef = FirebaseFirestore.getInstance().collection("Videojocs")
 
         juegosRef.get().addOnSuccessListener { querySnapshot ->
+            //Comprova quants hi ha
             val numDocumentos = querySnapshot.size()
 
+            //Si no hi ha mostrem el text i amaguem recycler
             if (numDocumentos == 0) {
                 recycler.visibility = View.GONE
                 textNoHay.visibility = View.VISIBLE
+            //Si hi ha amaguem text i mostrem recycler
             } else {
                 recycler.visibility = View.VISIBLE
                 textNoHay.visibility = View.GONE
@@ -91,6 +109,7 @@ class pantalla_principal : Fragment() {
         adaptador = PantallaPrincipalAdapter(JuegosList)
 
 
+
         db.collection("Videojocs").orderBy("títol").get().addOnSuccessListener { documents ->
             for (document in documents) {
                 val wallItem = document.toObject(dataPantallaPrincipal::class.java)
@@ -103,6 +122,10 @@ class pantalla_principal : Fragment() {
                     JuegosList.add(wallItem)
                     //ordenem la llista per ordre alfabètic per als jocs que s'afegeixen nous
                     JuegosList.sortBy { it.txt_game }
+
+                    // Inicializa la lista original de elementos con la lista de JuegosList
+                    PantallaPrincipalListOriginal = ArrayList(JuegosList)
+
                     adaptador.notifyDataSetChanged() // Notifica al adaptador que se ha añadido un nuevo elemento
                 }
             }
@@ -111,8 +134,6 @@ class pantalla_principal : Fragment() {
 
         }
     }
-
-
 
     companion object {
         /**
@@ -137,6 +158,7 @@ class pantalla_principal : Fragment() {
     private fun initRecyclerView() {
             //Amb el GridLayout controlem que apareixin 2 celes per fila
             binding.recyclerJuegos.layoutManager = GridLayoutManager(context, 2)
+            //adaptador = PantallaPrincipalAdapter(PantallaPrincipalListOriginal)
             binding.recyclerJuegos.adapter = PantallaPrincipalAdapter(PantallaPrincipalList.PantallaPrincipalList.toMutableList())
 
     }

@@ -212,7 +212,6 @@ class admin_insertar_videojuego : Fragment() {
         // Inflate the layout for this fragment
         binding = FragmentAdminInsertarVideojuegoBinding.inflate(inflater, container, false)
         return binding.root
-        (requireActivity() as MainActivity).title = "Insertar Videojuego"
 
     }
 

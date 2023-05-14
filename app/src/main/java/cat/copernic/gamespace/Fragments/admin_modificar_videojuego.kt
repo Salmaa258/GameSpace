@@ -66,7 +66,6 @@ class admin_modificar_videojuego : Fragment() {
         // Inflate the layout for this fragment
         binding = FragmentAdminModificarVideojuegoBinding.inflate(inflater, container, false)
         return binding.root
-        (requireActivity() as MainActivity).title = "Modificar Videojuego"
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

@@ -13,13 +13,16 @@
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@drawable/logo_gs"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/logo_gs"
         android:supportsRtl="true"
         android:theme="@style/Theme.GameSpace"
-        tools:targetApi="31" >
+        android:screenOrientation="portrait"
+        tools:targetApi="31">
+
 
         <activity
             android:name=".Activitys.splashart"
+            android:screenOrientation="portrait"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -32,6 +35,7 @@
         </activity>
         <activity
             android:name=".Activitys.MainActivity"
+            android:screenOrientation="portrait"
             android:exported="false" >
             <meta-data
                 android:name="android.app.lib_name"
@@ -40,6 +44,7 @@
 
         <activity
             android:name=".Activitys.Login"
+            android:screenOrientation="portrait"
             android:exported="false" >
             <meta-data
                 android:name="android.app.lib_name"
@@ -48,6 +53,7 @@
 
         <activity
             android:name=".Activitys.Registro"
+            android:screenOrientation="portrait"
             android:exported="false" >
             <meta-data
                 android:name="android.app.lib_name"
@@ -56,6 +62,7 @@
 
         <activity
             android:name=".Activitys.RecuperarContrasena"
+            android:screenOrientation="portrait"
             android:exported="false" >
             <meta-data
                 android:name="android.app.lib_name"

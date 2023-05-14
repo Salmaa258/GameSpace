@@ -44,7 +44,6 @@ class biblioteca_tab : Fragment() {
         _binding = FragmentBibliotecaTabBinding.inflate(inflater)
         var view = binding.root
         return view
-        (requireActivity() as MainActivity).title = "Biblioteca"
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

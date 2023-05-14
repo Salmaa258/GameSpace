@@ -40,13 +40,15 @@ class Registro : AppCompatActivity() {
 
         //CLIC INICIAR SESIÓN
         binding.btnCreaCuenta.setOnClickListener {
+            var nombre = binding.txtInputEditNombre.text.toString()
+            var apellidos = binding.txtInputEditApellidos.text.toString()
             var correo = binding.txtInputEditCorreoRegistro.text.toString()
             var contra = binding.txtInputEditContrasenaRegistro.text.toString()
             var contraRep = binding.txtInputEditRepetirContrasena.text.toString()
 
             //si la contrasenya coincideix amb el camp de repetir contrasenya, tots els camps estan plens i
             //la contrasenya es correcte, cridem funció per fer registre.
-            if(contra.equals(contraRep)&&campoVacio(correo,contra,contraRep, it)&&comprova_email_registre(binding)&&contraCurta(contra, it)&&check(it)){
+            if(contra.equals(contraRep)&&campoVacio(nombre, apellidos, correo,contra,contraRep)&&comprova_email_registre(binding)&&contraCurta(contra, it)&&check(it)){
                 registrar(correo,contra, it)
             }else{
                 camps_buits_registre(this, binding)
@@ -56,8 +58,8 @@ class Registro : AppCompatActivity() {
 
     //funció per comprovar que els camps del correu electrònic, la contrasenya i el camp de repetir
     // la contrasenya no son buits.
-    fun campoVacio(correo:String, contra:String, contraRep:String, it: View):Boolean {
-        return correo.isNotEmpty() && contra.isNotEmpty() && contraRep.isNotEmpty()
+    fun campoVacio(nombre: String, apellidos:String, correo:String, contra:String, contraRep:String):Boolean {
+        return nombre.isNotEmpty() && apellidos.isNotEmpty() && correo.isNotEmpty() && contra.isNotEmpty() && contraRep.isNotEmpty()
     }
 
     //Comprovar que la contrasenya tingui un mínim de 6 caràcters

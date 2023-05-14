@@ -60,6 +60,8 @@ class Utils {
         //Registro
         //Comprova que no hagui camps buits
         fun camps_buits_registre(context: Context, binding: ActivityRegistroBinding){
+            var nombre = binding.txtInputEditNombre.text.toString()
+            var apellidos = binding.txtInputEditApellidos.text.toString()
             var correo = binding.txtInputEditCorreoRegistro.text.toString()
             var contra = binding.txtInputEditContrasenaRegistro.text.toString()
             var contraRep = binding.txtInputEditRepetirContrasena.text.toString()
@@ -87,6 +89,18 @@ class Utils {
             }else if(correo.isEmpty()&&contra.isEmpty()){
                 builder.setTitle("Error")
                 builder.setMessage("Los campos no pueden estar vacíos")
+                builder.setPositiveButton("Aceptar", null)
+                val dialog = builder.create()
+                dialog.show()
+            }else if(nombre.isBlank()){
+                builder.setTitle("Error")
+                builder.setMessage("El nombre no puede estar vacío")
+                builder.setPositiveButton("Aceptar", null)
+                val dialog = builder.create()
+                dialog.show()
+            }else if(apellidos.isBlank()){
+                builder.setTitle("Error")
+                builder.setMessage("El apellido no puede estar vacío")
                 builder.setPositiveButton("Aceptar", null)
                 val dialog = builder.create()
                 dialog.show()

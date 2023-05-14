@@ -39,6 +39,26 @@
     <dimen name="search_height">60dp</dimen>
 
     <!-- Recycer View -->
-    <dimen name="recyclerView_heigh">530dp</dimen>
+    <dimen name="recyclerView_heigh">540dp</dimen>
+    <dimen name="recyclerView_admin_heigh">510dp</dimen>
+
+    <!--Card View-->
+    <dimen name="card_view_width">165dp</dimen>
+    <dimen name="card_view_height">195dp</dimen>
+    <dimen name="card_admin_view_height">260dp</dimen>
+
+    <!--Image View Recycler-->
+    <dimen name="img_height">170dp</dimen>
+    <dimen name="img_admin_height">170dp</dimen>
+
+    <!--Image View Perfil-->
+    <dimen name="img_perfil_height">106dp</dimen>
+    <dimen name="img_perfil_width">134dp</dimen>
+
+    <!--Margen-->
+    <dimen name="MarginLadoS">15dp</dimen>
+    <dimen name="MarginLadoImgEdit">30dp</dimen>
+
+
 
 </resources>

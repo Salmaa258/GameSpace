@@ -34,8 +34,8 @@
 
             <ImageView
                 android:id="@+id/img_perfil"
-                android:layout_width="134dp"
-                android:layout_height="106dp"
+                android:layout_width="@dimen/img_perfil_width"
+                android:layout_height="@dimen/img_perfil_height"
                 android:layout_marginTop="@dimen/MarginTopS"
                 android:contentDescription="@string/descripcion_img_perfil"
                 android:src="@drawable/foto_perfil"
