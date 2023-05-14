@@ -14,11 +14,14 @@ Herramienta para todos aquellos usuarios amantes y no amantes de  los videojuego
 ### Link a Google Play
 [<img src="./Img/googleplay.png" alt="Xml" width="40" height="40">](https://play.google.com/store/apps/details?id=cat.copernic.gamespace)
 
+### Link al video Demo 
+[Demo](https://drive.google.com/file/d/1Xkkmd32FapLOoTnZggo9E3K9vx6TR9Ru/view?usp=share_link)
+
+### Link a la memoria
+[Memoria](https://docs.google.com/document/d/1EbKpPCzKCd1teMXwnpyA4o6v3QgGUKq9jXJomoCv8pw/edit?usp=sharing)
 
 
-
-
-
+__________________________________________________________________
 
 
 
