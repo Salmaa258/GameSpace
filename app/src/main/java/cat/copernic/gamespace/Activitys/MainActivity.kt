@@ -1,8 +1,13 @@
 package cat.copernic.gamespace.Activitys
 
+import android.content.ActivityNotFoundException
+import android.content.Context
 import android.content.Intent
+import android.content.pm.ActivityInfo
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AlertDialog
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
@@ -86,6 +91,40 @@ class MainActivity : AppCompatActivity() {
                 }
         }
 
+        mostrarDialogoValoracion()
+    }
+
+    private fun mostrarDialogoValoracion() {
+        val sharedPrefs = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
+        val dialogShown = sharedPrefs.getBoolean("dialogShown", false)
+
+        if (!dialogShown) {
+            val builder = AlertDialog.Builder(this)
+            builder.setMessage("¿Te gusta esta aplicación? Valórala en Google Play y ayuda a otros a descubrirla")
+                .setPositiveButton("Valorar") { _, _ ->
+                    irAValoracion()
+                    // Guardar el indicador de que se mostró el diálogo
+                    sharedPrefs.edit().putBoolean("dialogShown", true).apply()
+                }
+                .setNegativeButton("Ahora no") { _, _ ->
+                    // Guardar el indicador de que se mostró el diálogo
+                    sharedPrefs.edit().putBoolean("dialogShown", true).apply()
+                }
+            val dialog = builder.create()
+            dialog.show()
+        }
+    }
+
+    private fun irAValoracion() {
+        val packageName = packageName // Obtiene el nombre del paquete de la aplicación actual
+        val playStoreLink = "market://details?id=$packageName" // Crea el enlace a la página de valoración de Google Play
+
+        try {
+            startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(playStoreLink)))
+        } catch (e: ActivityNotFoundException) {
+            // En caso de que Google Play Store no esté instalado en el dispositivo, abrir la página de Google Play en el navegador
+            startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("http://play.google.com/store/apps/details?id=$packageName")))
+        }
     }
 
     override fun onSupportNavigateUp(): Boolean {
