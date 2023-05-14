@@ -1,5 +1,28 @@
 # GameSpace
 
+### Projecte Android Studio GameSpace  
+<img src="./Img/logoGS.png" alt="Xml" width="120" height="120">
+
+Herramienta para todos aquellos usuarios amantes y no amantes de  los videojuegos que necesiten un mayor control sobre los videojuegos que poseen y los que desean obtener.
+
+### Pantallas 
+<img src="./Img/capt1.jpg" alt="Xml" width="120" height="230">,
+<img src="./Img/capt2.jpg" alt="Xml" width="120" height="230">,
+<img src="./Img/capt4.jpg" alt="Xml" width="120" height="230">,
+<img src="./Img/capt3.jpg" alt="Xml" width="120" height="230">
+
+### Link a Google Play
+[<img src="./Img/googleplay.png" alt="Xml" width="40" height="40">](https://play.google.com/store/apps/details?id=cat.copernic.gamespace)
+
+
+
+
+
+
+
+
+
+
 
 
 ## Getting started
